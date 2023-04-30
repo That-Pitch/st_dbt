@@ -1,15 +1,18 @@
-{{config(post_hook='alter table public_normalized.normalized_users add primary key (id)')}}
-
+{{
+    config(
+        post_hook=[after_commit("alter table {{ this }} drop constraint if exists nu_id_pk cascade"),after_commit("alter table {{ this }} add constraint nu_id_pk primary key (id)")]
+    )
+}}
 
 
 
 
 select id,
        name,
-       created,
+       created::timestamp,
        artists[0] as artist_id,
        email,
-       lastmodified,
+       lastmodified::timestamp as last_modified,
        activesubscriptions[0],
        _airbyte_emitted_at,
        _airbyte_ab_id,

@@ -1,18 +1,18 @@
 version: 2
 
 sources:
-- name: raw_synchtank
-  schema: public
-  database: postgres
-  loaded_at_field: _airbyte_emitted_at
-  tables:
-    - name: purchases
-    - name: baskets
-    - name: tracks
-    - name: users
-    - name: artists
-    - name: genres
-    - name: collections
+  - name: raw_synchtank
+    schema: public
+    database: postgres
+    loaded_at_field: _airbyte_emitted_at
+    tables:
+      - name: purchases
+      - name: baskets
+      - name: tracks
+      - name: users
+      - name: artists
+      - name: genres
+      - name: collections
 
 models:
   - name: normalized_purchases

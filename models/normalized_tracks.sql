@@ -1,15 +1,18 @@
-{{config(post_hook='alter table public_normalized.normalized_tracks add primary key (id)')}}
-
+{{
+    config(
+        post_hook=[after_commit("alter table {{ this }} drop constraint if exists nt_id_pk cascade"),after_commit("alter table {{ this }} add constraint nt_id_pk primary key (id)")]
+    )
+}}
 
 select id,
-       created,
-       lastmodified,
-       published,
+       created::timestamp,
+       lastmodified::timestamp as last_modified,
+       published::timestamp,
        title,
        duration,
        isrc,
        artist,
-       originallypublished,
+       originallypublished::timestamp as originally_published,
        customtrackid,
        files[0]->>'url' as file_url,
        files[0]->>'originalFilename' as filename,
