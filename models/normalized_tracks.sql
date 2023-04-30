@@ -1,5 +1,8 @@
-{{config(post_hook='alter table public_normalized.normalized_tracks add primary key (id)')}}
-
+{{
+    config(
+        post_hook=[after_commit("alter table {{ this }} drop constraint if exists nt_id_pk cascade"),after_commit("alter table {{ this }} add constraint nt_id_pk primary key (id)")]
+    )
+}}
 
 select id,
        created,
