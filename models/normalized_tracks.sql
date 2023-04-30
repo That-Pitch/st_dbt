@@ -1,3 +1,6 @@
+{{config(post_hook='alter table public_normalized.normalized_tracks add primary key (id)')}}
+
+
 select id,
        created,
        lastmodified,

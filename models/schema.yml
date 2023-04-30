@@ -1,0 +1,42 @@
+version: 2
+
+sources:
+- name: raw_synchtank
+  schema: public
+  database: postgres
+  loaded_at_field: _airbyte_emitted_at
+  tables:
+    - name: purchases
+    - name: baskets
+    - name: tracks
+    - name: users
+    - name: artists
+    - name: genres
+    - name: collections
+
+models:
+  - name: normalized_purchases
+    +materialized: table
+    +schema: normalized
+    columns:
+      - name: id
+        data_type: bigint
+        tests:
+          - unique
+          - not_null
+      - name: created
+        data_type: timestamp
+      - name: amount
+        data_type: double_precision
+      - name: user_id
+        data_type: bigint
+      - name: buyer_name
+        data_type: varchar
+      - name: basket_items
+        data_type: jsonb
+      - name: test_col
+        data_type: bigint
+
+
+
+

@@ -1,3 +1,9 @@
+{{config(post_hook='alter table public_normalized.normalized_users add primary key (id)')}}
+
+
+
+
+
 select id,
        name,
        created,
