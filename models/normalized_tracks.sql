@@ -5,14 +5,14 @@
 }}
 
 select id,
-       created,
-       lastmodified,
-       published,
+       created::timestamp,
+       lastmodified::timestamp as last_modified,
+       published::timestamp,
        title,
        duration,
        isrc,
        artist,
-       originallypublished,
+       originallypublished::timestamp as originally_published,
        customtrackid,
        files[0]->>'url' as file_url,
        files[0]->>'originalFilename' as filename,

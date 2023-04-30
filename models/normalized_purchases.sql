@@ -11,7 +11,7 @@
 
 select
     p.id,
-    p.created,
+    p.created::timestamp,
     p.amount,
     p.user as user_id,
     u.name as buyer_name,
