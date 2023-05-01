@@ -12,7 +12,7 @@
 select
     p.id,
     p.created::timestamp,
-    p.amount,
+    p.amount::numeric,
     p.user as user_id,
     u.name as buyer_name,
     b.basketitems as basket_items,
