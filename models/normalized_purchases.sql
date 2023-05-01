@@ -12,7 +12,7 @@
 select
     p.id,
     p.created::timestamp,
-    p.amount::numeric,
+    {{dollars_to_cents('p.amount')}} as amount_in_cents,
     p.user as user_id,
     u.name as buyer_name,
     b.basketitems as basket_items,
