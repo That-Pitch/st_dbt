@@ -13,6 +13,8 @@ sources:
       - name: artists
       - name: genres
       - name: collections
+      - name: baskets_basketitems
+      - name: licenses
 
 models:
   - name: normalized_purchases
