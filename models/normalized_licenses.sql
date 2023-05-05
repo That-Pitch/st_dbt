@@ -1,7 +1,6 @@
 {{
     config(
-        post_hook=[after_commit("alter table {{ this }} drop constraint if exists nl_id_pk cascade"),after_commit("alter table {{ this }} add constraint nl_id_pk primary key (id)")
-
+        post_hook=[set_primary_key("nl_id_pk","id")
         ]
     )
 }}
@@ -11,7 +10,7 @@ select
     name,
     created::timestamp,
     trackcount as track_count,
-    collections,
+    collections[0]::bigint,
     exclusive,
                _airbyte_emitted_at,
        _airbyte_ab_id,

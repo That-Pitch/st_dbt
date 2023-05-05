@@ -1,6 +1,7 @@
 {{
     config(
-        post_hook=[after_commit("alter table {{ this }} drop constraint if exists nu_id_pk cascade"),after_commit("alter table {{ this }} add constraint nu_id_pk primary key (id)")
+        post_hook=[set_primary_key("nu_id_pk","id")
+
 
         ]
     )
@@ -21,5 +22,5 @@ select id,
        _airbyte_emitted_at,
        _airbyte_ab_id,
        _airbyte_users_hashid
-from users
+from {{ source("raw_synchtank", "users") }}
 order by created desc

@@ -1,5 +1,10 @@
 
-{% macro set_primary_key(this,constraint_name,column_name) %}
-    alter table {{this}} drop constraint if exists {{constraint_name}};
-    alter table {{this}} add constraint {{constraint_name}} primary key ("{{column_name}}")
+{% macro set_primary_key(pk_name, pk_col) %}
+
+
+ {{
+    after_commit("ALTER TABLE {{this}} add constraint " ~ pk_name ~ " primary key (" ~pk_col ~ ")")
+
+  }}
+
 {% endmacro %}
