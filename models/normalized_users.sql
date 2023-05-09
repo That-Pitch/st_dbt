@@ -18,7 +18,7 @@ select id,
        lastmodified::timestamp as last_modified,
        (activesubscriptions[0]->>'id')::bigint as subscription_id,
        (activesubscriptions[0]->>'name')::varchar as subscription_name,
-       (activesubscriptions[0]->'artistcollectiontitles') as subscription_collections,
+       (activesubscriptions[0]->'artistCollectionTitles') as subscription_collections,
        _airbyte_emitted_at,
        _airbyte_ab_id,
        _airbyte_users_hashid

@@ -12,7 +12,8 @@ select
     trackcount as track_count,
     collections[0]::bigint,
     exclusive,
-               _airbyte_emitted_at,
+
+    _airbyte_emitted_at,
        _airbyte_ab_id,
        _airbyte_licenses_hashid
 
