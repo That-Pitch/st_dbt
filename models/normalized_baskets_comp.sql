@@ -29,7 +29,7 @@ b.created::timestamp,
     bi._airbyte_basketitems_hashid
 from {{ref('normalized_baskets')}} b
 inner join {{ref('normalized_basket_items')}} bi  using (_airbyte_baskets_hashid)
-left join {{ref('normalized_licenses')}} as l on l.id = bi.license::bigint
+left join {{ref('normalized_licenses')}} as l on l.id = bi.license
 left join {{ref('normalized_collections')}} as c on c.id = l.collections
 
 
