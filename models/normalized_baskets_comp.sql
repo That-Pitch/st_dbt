@@ -19,8 +19,6 @@ b.created::timestamp,
     bi.refundreason as refund_reason,
     bi.license as license_id,
     bi.licensename as license_name,
-    c.name as collection_name,
-    l.exclusive as license_is_exclusive,
     {{ dollars_to_cents("bi.priceataddition") }} as price_at_addition,
     bi.track as track_id,
     bi.gatewayrefundid as gateway_refund_id,
@@ -29,8 +27,7 @@ b.created::timestamp,
     bi._airbyte_basketitems_hashid
 from {{ref('normalized_baskets')}} b
 inner join {{ref('normalized_basket_items')}} bi  using (_airbyte_baskets_hashid)
-left join {{ref('normalized_licenses')}} as l on l.id = bi.license
-left join {{ref('normalized_collections')}} as c on c.id = l.collections
+
 
 
 
