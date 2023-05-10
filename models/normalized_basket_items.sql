@@ -6,9 +6,6 @@
 }}
 
 
--- Select all basket items from baskets table which will return a row for every basket
--- item with its corresponding basket id
--- this is then used as a join on basket_items
 
 select
     *
