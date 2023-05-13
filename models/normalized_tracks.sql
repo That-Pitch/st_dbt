@@ -1,6 +1,7 @@
 {{
     config(
-        post_hook=[set_primary_key("nt_id_pk","id")
+        post_hook=[set_primary_key("nt_id_pk","id"),
+         set_foreign_key("na_id_fk","artist","{{ ref('normalized_artists') }} (id)"),
     ]
     )
 }}
@@ -12,7 +13,7 @@ select t.id,
        t.title,
        t.duration,
        t.isrc,
-       t.artist,
+       t.artist::bigint,
        t.originallypublished::timestamp as originally_published,
        t.customtrackid,
        t.files[0]->>'url' as file_url,
