@@ -21,12 +21,14 @@ b.created::timestamp,
     bi.licensename as license_name,
     {{ dollars_to_cents("bi.priceataddition") }} as price_at_addition,
     bi.track as track_id,
+    t.is_exclusive as exclusive_track,
     bi.gatewayrefundid as gateway_refund_id,
     bi._airbyte_emitted_at,
     bi._airbyte_ab_id,
     bi._airbyte_basketitems_hashid
 from {{ref('normalized_baskets')}} b
 inner join {{ref('normalized_basket_items')}} bi  using (_airbyte_baskets_hashid)
+left join {{ref('normalized_tracks')}} t on t.id = bi.track
 
 
 
