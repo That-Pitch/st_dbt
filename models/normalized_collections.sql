@@ -12,7 +12,7 @@
 select id,
        name,
        description,
-       case when name like '%(Non-Exclusive)%' then true else false end as is_exclusive,
+       case when name like '%(Non-Exclusive)%' then false else true end as is_exclusive,
        _airbyte_emitted_at,
        _airbyte_ab_id,
        _airbyte_collections_hashid
