@@ -22,6 +22,8 @@ b.created::timestamp,
     {{ dollars_to_cents("bi.priceataddition") }} as price_at_addition,
     bi.track as track_id,
     t.is_exclusive as exclusive_track,
+    a.artist_name,
+    a.sub_name as artist_subscription_name,
     bi.gatewayrefundid as gateway_refund_id,
     bi._airbyte_emitted_at,
     bi._airbyte_ab_id,
@@ -29,6 +31,9 @@ b.created::timestamp,
 from {{ref('normalized_baskets')}} b
 inner join {{ref('normalized_basket_items')}} bi  using (_airbyte_baskets_hashid)
 left join {{ref('normalized_tracks')}} t on t.id = bi.track
+left join {{ref('normalized_artists_comp')}} a on a.artist_id = t.artist
+
+
 
 
 
