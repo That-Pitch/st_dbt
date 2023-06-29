@@ -17,7 +17,6 @@ b.created::timestamp,
     bi.itemtype as item_type,
     bi.quantity::integer,
     bi.priceatpurchase as price_at_purchase,
-    bi.refundreason as refund_reason,
     bi.license as license_id,
     bi.licensename as license_name,
     {{ dollars_to_cents("bi.priceataddition") }} as price_at_addition,
@@ -26,7 +25,7 @@ b.created::timestamp,
     t.is_exclusive as exclusive_track,
     ac.artist_id,
     ac.user_id,
-    bi.gatewayrefundid as gateway_refund_id,
+
     bi._airbyte_emitted_at,
     bi._airbyte_ab_id,
     bi._airbyte_basketitems_hashid
@@ -34,6 +33,7 @@ from {{ref('normalized_baskets')}} b
 inner join {{ref('normalized_basket_items')}} bi  using (_airbyte_baskets_hashid)
 left join {{ref('normalized_tracks')}} t on t.id = bi.track
 left join {{ref('normalized_artists_comp')}} ac on ac.artist_id = t.artist
+order by created desc
 
 
 
@@ -44,3 +44,4 @@ left join {{ref('normalized_artists_comp')}} ac on ac.artist_id = t.artist
 
 
 
+--set_foreign_key("nr_id_fk", "payment_transaction_id","{{ref('normalized_refunds')}} (payment_intent)")

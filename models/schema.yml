@@ -16,6 +16,15 @@ sources:
       - name: baskets_basketitems
       - name: licenses
 
+  - name: raw_stripe
+    schema: public_stripe
+    database: postgres
+    tables:
+      - name: charges
+      - name: refunds
+      - name: disputes
+
+
 models:
   - name: normalized_purchases
     +materialized: table
