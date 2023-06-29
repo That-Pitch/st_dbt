@@ -15,12 +15,13 @@ b.id as basket_id,
 bi.id as item_id,
 b.created::timestamp,
     bi.itemtype as item_type,
-    bi.quantity,
+    bi.quantity::integer,
     bi.priceatpurchase as price_at_purchase,
     bi.refundreason as refund_reason,
     bi.license as license_id,
     bi.licensename as license_name,
     {{ dollars_to_cents("bi.priceataddition") }} as price_at_addition,
+    b.payment_transaction_id,
     bi.track as track_id,
     t.is_exclusive as exclusive_track,
     ac.artist_id,
@@ -33,6 +34,7 @@ from {{ref('normalized_baskets')}} b
 inner join {{ref('normalized_basket_items')}} bi  using (_airbyte_baskets_hashid)
 left join {{ref('normalized_tracks')}} t on t.id = bi.track
 left join {{ref('normalized_artists_comp')}} ac on ac.artist_id = t.artist
+
 
 
 
