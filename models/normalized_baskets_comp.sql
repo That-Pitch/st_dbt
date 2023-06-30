@@ -19,6 +19,7 @@ b.created::timestamp,
     bi.priceatpurchase as price_at_purchase,
     bi.license as license_id,
     bi.licensename as license_name,
+    hc.form_id as helloworks_form_id,
     {{ dollars_to_cents("bi.priceataddition") }} as price_at_addition,
     b.payment_transaction_id,
     nc.id as charge_id,
@@ -36,6 +37,7 @@ inner join {{ref('normalized_basket_items')}} bi  using (_airbyte_baskets_hashid
 left join {{ref('normalized_tracks')}} t on t.id = bi.track
 left join {{ref('normalized_artists_comp')}} ac on ac.artist_id = t.artist
 left join {{ref('normalized_charges')}} nc on nc.payment_intent = b.payment_transaction_id
+left join {{ source("jobs", "job_helloworks_contracts") }} hc on hc.license_id = bi.license
 where t.is_exclusive is not null
 order by created desc
 

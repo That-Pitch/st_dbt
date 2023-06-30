@@ -23,6 +23,11 @@ sources:
       - name: charges
       - name: refunds
       - name: disputes
+  - name: jobs
+    schema: public_normalized
+    database: postgres
+    tables:
+      - name: job_helloworks_contracts
 
 
 models:
