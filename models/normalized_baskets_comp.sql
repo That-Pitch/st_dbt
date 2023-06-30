@@ -36,6 +36,7 @@ inner join {{ref('normalized_basket_items')}} bi  using (_airbyte_baskets_hashid
 left join {{ref('normalized_tracks')}} t on t.id = bi.track
 left join {{ref('normalized_artists_comp')}} ac on ac.artist_id = t.artist
 left join {{ref('normalized_charges')}} nc on nc.payment_intent = b.payment_transaction_id
+where t.is_exclusive is not null
 order by created desc
 
 
@@ -46,5 +47,3 @@ order by created desc
 
 
 
-
---set_foreign_key("nr_id_fk", "payment_transaction_id","{{ref('normalized_refunds')}} (payment_intent)")
