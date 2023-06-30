@@ -11,6 +11,6 @@
 select
       c.*
 from {{ source("raw_stripe", "charges") }} c
-inner join {{ref('normalized_baskets_comp')}} bc on bc.payment_transaction_id = c.payment_intent
-where c.payment_intent = bc.payment_transaction_id
+WHERE c.metadata::jsonb ? 'basketId'
+and c.paid is true
 order by c.created desc

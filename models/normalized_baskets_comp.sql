@@ -21,11 +21,13 @@ b.created::timestamp,
     bi.licensename as license_name,
     {{ dollars_to_cents("bi.priceataddition") }} as price_at_addition,
     b.payment_transaction_id,
+    nc.id as charge_id,
+    nc.refunded as is_refunded,
+    nc.description as charge_description,
     bi.track as track_id,
     t.is_exclusive as exclusive_track,
     ac.artist_id,
     ac.user_id,
-
     bi._airbyte_emitted_at,
     bi._airbyte_ab_id,
     bi._airbyte_basketitems_hashid
@@ -33,6 +35,7 @@ from {{ref('normalized_baskets')}} b
 inner join {{ref('normalized_basket_items')}} bi  using (_airbyte_baskets_hashid)
 left join {{ref('normalized_tracks')}} t on t.id = bi.track
 left join {{ref('normalized_artists_comp')}} ac on ac.artist_id = t.artist
+left join {{ref('normalized_charges')}} nc on nc.payment_intent = b.payment_transaction_id
 order by created desc
 
 
