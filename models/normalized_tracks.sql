@@ -41,4 +41,5 @@ select t.id,
        t._airbyte_emitted_at
 from {{ source("raw_synchtank", "tracks") }} as t
 left join {{ref('normalized_collections')}} as nc on nc.id = t.collections[0]::bigint
+where t.collections[0] is not null
 order by created desc
