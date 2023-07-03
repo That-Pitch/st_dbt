@@ -23,11 +23,17 @@ sources:
       - name: charges
       - name: refunds
       - name: disputes
+
   - name: jobs
     schema: public_normalized
     database: postgres
     tables:
       - name: job_helloworks_contracts
+      - name: job_detail
+      - name: job_helloworks_tracker
+      - name: job_payments
+      - name: job_payouts
+      - name: job_tracker
 
 
 models:
@@ -36,6 +42,12 @@ models:
       contract:
         enforced: true
     columns:
+      - name: id
+        data_type: bigint
+      - name: title
+        data_type: text
+        constraints:
+          - type: not_null
       - name: _airbyte_ab_id
         data_type: varchar
       - name: _airbyte_emitted_at
@@ -78,10 +90,9 @@ models:
         data_type: text
       - name: genre_names
         data_type: jsonb
+
       - name: genres
         data_type: jsonb
-      - name: id
-        data_type: bigint
       - name: is_exclusive
         data_type: boolean
       - name: iscomposition
@@ -98,10 +109,6 @@ models:
         data_type: timestamp
       - name: releasedate
         data_type: text
-      - name: title
-        data_type: text
-        constraints:
-          - type: not_null
       - name: youtubeassetids
         data_type: jsonb
 
