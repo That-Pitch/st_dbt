@@ -20,3 +20,4 @@ select
        _airbyte_purchases_hashid
 
 from {{ source("raw_synchtank", "purchases") }} as p
+where p.created::date > date('2023-06-01') and p.paymentprovider != 'braintree'

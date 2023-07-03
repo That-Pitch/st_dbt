@@ -16,6 +16,6 @@ select id,
        _airbyte_baskets_hashid
 
 
-from {{ source("raw_synchtank", "baskets") }}
-
+from {{ source("raw_synchtank", "baskets") }} b
+where created::date > date('2023-06-01')
 

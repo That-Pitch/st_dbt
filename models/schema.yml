@@ -90,7 +90,6 @@ models:
         data_type: text
       - name: genre_names
         data_type: jsonb
-
       - name: genres
         data_type: jsonb
       - name: is_exclusive
