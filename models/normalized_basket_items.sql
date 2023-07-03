@@ -1,6 +1,8 @@
 {{
     config(
-        post_hook=[set_primary_key("nbi_id_pk", "id")
+        post_hook=[set_primary_key("nbi_id_pk", "id"),
+        set_foreign_key("nbi_licenseid_fk","license","{{ref('normalized_licenses')}} (id)")
+
         ]
     )
 }}
@@ -30,4 +32,5 @@ select
     _airbyte_normalized_at  ,
     _airbyte_basketitems_hashid
 from {{ source("raw_synchtank", "baskets_basketitems") }}
+where licensename is not null and license is not null and license in (select id from {{ref('normalized_licenses')}} )
 

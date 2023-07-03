@@ -20,5 +20,6 @@ select
 
 
 from {{ source("raw_synchtank", "licenses") }}
+where collections[0] is not null
 
 

@@ -38,7 +38,7 @@ left join {{ref('normalized_tracks')}} t on t.id = bi.track
 left join {{ref('normalized_artists_comp')}} ac on ac.artist_id = t.artist
 left join {{ref('normalized_charges')}} nc on nc.payment_intent = b.payment_transaction_id
 left join {{ source("jobs", "job_helloworks_contracts") }} hc on hc.license_id = bi.license
-where t.is_exclusive is not null
+where t.is_exclusive is not null and  bi.license is not null
 order by created desc
 
 
