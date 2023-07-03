@@ -9,7 +9,6 @@
 select t.id,
        t.created::timestamp,
        t.lastmodified::timestamp as last_modified,
-       t.published::timestamp,
        t.title,
        t.duration,
        t.isrc,
