@@ -108,6 +108,8 @@ models:
         data_type: text
       - name: youtubeassetids
         data_type: jsonb
+      - name: clearedprocessstatus
+        data_type: text
 
 
 
