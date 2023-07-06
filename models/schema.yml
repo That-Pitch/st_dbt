@@ -15,6 +15,7 @@ sources:
       - name: collections
       - name: baskets_basketitems
       - name: licenses
+      - name: reviewtracks
 
   - name: raw_stripe
     schema: public_stripe

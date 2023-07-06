@@ -6,4 +6,4 @@
     )
 }}
 
-select * from {{source('reviewtracks')}}
+select * from {{source('raw_synchtank','reviewtracks')}}
