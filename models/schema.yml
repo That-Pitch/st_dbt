@@ -90,7 +90,7 @@ models:
       - name: filename
         data_type: text
       - name: genre_names
-        data_type: jsonb
+        data_type: text[]
       - name: genres
         data_type: jsonb
       - name: is_exclusive
@@ -110,6 +110,10 @@ models:
       - name: youtubeassetids
         data_type: jsonb
       - name: clearedprocessstatus
+        data_type: text
+      - name: iswc
+        data_type: text
+      - name: publishername
         data_type: text
 
 
