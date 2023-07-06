@@ -26,6 +26,7 @@ select t.id,
        t.youtubeAssetIds,
        t.album,
          t.iswc,
+         t.publishername
        t.releasedate,
        t.albumupc,
        t.iscomposition,
