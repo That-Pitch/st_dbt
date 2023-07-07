@@ -3,3 +3,6 @@ target/
 dbt_packages/
 logs/
 .idea/
+.vscode/settings.json
+
+.DS_Store

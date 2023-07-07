@@ -15,7 +15,7 @@ sources:
       - name: collections
       - name: baskets_basketitems
       - name: licenses
-      - name: trackaudio
+      - name: reviewtracks
 
   - name: raw_stripe
     schema: public_stripe
@@ -87,10 +87,8 @@ models:
         data_type: text
       - name: duration
         data_type: bigint
-      - name: file_url
-        data_type: text
-      - name: filename
-        data_type: text
+      - name: audiomp3
+        data_type: jsonb
       - name: genre_names
         data_type: text[]
       - name: genres
