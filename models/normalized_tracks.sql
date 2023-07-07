@@ -24,7 +24,7 @@ select
     array(select jsonb_array_elements_text(t.metadata -> 'genreNames')) as genre_names,
     t.licenses,
     t.collections[0]::bigint,
-    t.audiomp3,
+    t.audiomp3::json,
     nc.is_exclusive,
     t.youtubeassetids,
     t.album,
