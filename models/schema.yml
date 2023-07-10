@@ -38,6 +38,7 @@ sources:
       - name: job_payments
       - name: job_payouts
       - name: job_tracker
+      - name: job_sales_reports
 
 
 models:
@@ -107,6 +108,8 @@ models:
       - name: licenses
         data_type: jsonb
       - name: originally_published
+        data_type: timestamp
+      - name: published
         data_type: timestamp
       - name: releasedate
         data_type: text

@@ -18,6 +18,7 @@ select
     t.isrc,
     t.clearedprocessstatus,
     t.artist::bigint,
+                t.published::timestamp as published,
     t.originallypublished::timestamp as originally_published,
     t.customtrackid,
     t.metadata -> 'genres' as genres,
