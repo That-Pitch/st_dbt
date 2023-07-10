@@ -21,3 +21,4 @@ select
 
 from {{ source("raw_synchtank", "purchases") }} as p
 where p.created::date > date('2023-06-01') and p.paymentprovider != 'braintree'
+order by p.created::timestamp desc
