@@ -14,7 +14,7 @@ select
 b.id as basket_id,
 bi.id as item_id,
 b.created::timestamp,
-p.created::timestamp as purchased,
+p.created::date as purchased,
     bi.itemtype as item_type,
     bi.quantity::integer,
     bi.priceatpurchase as price_at_purchase,
