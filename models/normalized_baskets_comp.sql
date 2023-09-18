@@ -14,6 +14,7 @@ select
 b.id as basket_id,
 bi.id as item_id,
 b.created::timestamp,
+p.created::timestamp as purchased,
     bi.itemtype as item_type,
     bi.quantity::integer,
     bi.priceatpurchase as price_at_purchase,
@@ -34,6 +35,7 @@ b.created::timestamp,
     bi._airbyte_basketitems_hashid
 from {{ref('normalized_baskets')}} b
 inner join {{ref('normalized_basket_items')}} bi  using (_airbyte_baskets_hashid)
+inner join {{ref('normalized_purchases')}} p on p.basket_id = b.id
 left join {{ref('normalized_tracks')}} t on t.id = bi.track
 left join {{ref('normalized_artists_comp')}} ac on ac.artist_id = t.artist
 left join {{ref('normalized_charges')}} nc on nc.payment_intent = b.payment_transaction_id
