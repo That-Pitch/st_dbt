@@ -15,6 +15,7 @@ b.id as basket_id,
 bi.id as item_id,
 b.created::timestamp,
 p.created::date as purchased,
+p.id as purchase_id
     bi.itemtype as item_type,
     bi.quantity::integer,
     bi.priceatpurchase as price_at_purchase,
