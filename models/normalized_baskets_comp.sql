@@ -4,6 +4,7 @@
         set_foreign_key("nb_id_fk","basket_id","{{ ref('normalized_baskets') }} (id)"),
         set_foreign_key("nbi_id_fk","item_id","{{ ref('normalized_basket_items') }} (id)"),
         set_foreign_key("nt_id_fk","track_id","{{ref('normalized_tracks')}} (id)"),
+        set_foreign_key("np_id_fk","purchase_id","{{ref('normalized_purchases')}} (id)"),
         set_foreign_key("nac_id_fk","artist_id, user_id","{{ref('normalized_artists_comp')}} (artist_id, user_id)")
         ]
     )
@@ -18,11 +19,11 @@ p.created::date as purchased,
 p.id as purchase_id,
     bi.itemtype as item_type,
     bi.quantity::integer,
-    bi.priceatpurchase as price_at_purchase,
     bi.license as license_id,
     bi.licensename as license_name,
     hc.form_id as helloworks_form_id,
     {{ dollars_to_cents("bi.priceataddition") }} as price_at_addition,
+    {{ dollars_to_cents("bi.priceataddition") }} * bi.quantity::integer as total_price,
     b.payment_transaction_id,
     nc.id as charge_id,
     nc.refunded as is_refunded,
