@@ -34,7 +34,6 @@ select
     t.releasedate,
     t.albumupc,
     t.iscomposition,
-    t.composition,
     t.composer,
     t.compositiontitle,
     t.compositionyear,

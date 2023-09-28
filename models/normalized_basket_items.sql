@@ -14,7 +14,6 @@
 
 select
     _airbyte_baskets_hashid,
-    licenseprice,
     itemtype     ,
     licensecustomdetails,
     quantity             ,
