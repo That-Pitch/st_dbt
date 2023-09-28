@@ -36,7 +36,6 @@ select
     t.iscomposition,
     t.composer,
     t.compositiontitle,
-    t.compositionyear,
     t.compositionproduct,
     t.compositionproductiontracks,
     t.compositionpublishers,
