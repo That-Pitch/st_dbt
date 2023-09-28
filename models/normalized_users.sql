@@ -21,4 +21,5 @@ select
     _airbyte_ab_id,
     _airbyte_users_hashid
 from {{ source("raw_synchtank", "users") }}
+where email not like '%@synchtank.net'
 order by created desc
