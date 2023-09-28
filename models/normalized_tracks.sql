@@ -10,7 +10,7 @@
 }}
 
 select
-    t.id,
+    t.id::bigint,
     t.created::timestamp,
     t.lastmodified::timestamp as last_modified,
     t.title,

@@ -2,7 +2,7 @@
 
 
 select
-    id,
+    id::bigint,
     name,
     created::timestamp,
     artists,  -- 1 user can be associated with multiple artists but all share the same subscription.

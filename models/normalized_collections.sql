@@ -9,7 +9,7 @@
 
 
 
-select id,
+select id::bigint,
        name,
        description,
        case when name like '%(Non-Exclusive)%' then false else true end as is_exclusive,

@@ -25,7 +25,7 @@ select
     licenseterritory        ,
     currency,
     license::bigint,
-    id                    ,
+    id::bigint                  ,
     track                   ,
     trackdetail             ,
     gatewayrefundid         ,

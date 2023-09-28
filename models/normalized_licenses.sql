@@ -6,7 +6,7 @@
 }}
 
 select
-    id,
+    id::bigint,
     name,
     created::timestamp,
     trackcount as track_count,

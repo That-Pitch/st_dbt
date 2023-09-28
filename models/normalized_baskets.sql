@@ -6,7 +6,7 @@
     )
 }}
 
-select id,
+select id::bigint,
        {{dollars_to_cents('totalprice')}} as total_amount_in_cents,
        created::timestamp,
     paymenttransactionid as payment_transaction_id,

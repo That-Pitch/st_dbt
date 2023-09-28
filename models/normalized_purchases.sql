@@ -11,10 +11,10 @@
 
 
 select
-    p.id,
+    p.id::bigint,
     p.created::timestamp,
-    p.user as purchaser_user_id,
-    p.basket as basket_id,
+    p.user::bigint as purchaser_user_id,
+    p.basket::bigint as basket_id,
            _airbyte_emitted_at,
        _airbyte_ab_id,
        _airbyte_purchases_hashid
