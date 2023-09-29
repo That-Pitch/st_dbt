@@ -1,4 +1,10 @@
-{{ config(post_hook=[set_primary_key("nu_id_pk", "id")]) }}
+{{
+    config(
+        materialized="incremental",
+        unique_key="id",
+       
+    )
+}}
 
 
 select
@@ -21,5 +27,16 @@ select
     _airbyte_ab_id,
     _airbyte_users_hashid
 from {{ source("raw_synchtank", "users") }}
-where email not like '%@synchtank.net'
+
+
+{% if is_incremental() %}
+
+    -- this filter will only be applied on an incremental run
+    -- (uses > to include records whose timestamp occurred since the last run of this
+    -- model)
+    where lastmodified::timestamp >= (select max(last_modified) from {{ this }}) and email not like '%@synchtank.net'
+
+{% endif %}
 order by created desc
+{# where email not like '%@synchtank.net' #}
+ {# post_hook=[set_primary_key("nu_id_pk", "id")], #}
