@@ -35,4 +35,4 @@ select
     _airbyte_basketitems_hashid
 from {{ source("raw_synchtank", "baskets_basketitems") }}
         where licensename != '' and license::bigint in (select id from {{ ref("normalized_licenses") }})
-
+order by _airbyte_emitted_at desc

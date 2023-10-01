@@ -9,3 +9,4 @@ select
     a._airbyte_artists_hashid
 
 from {{ source("raw_synchtank", "artists") }} a
+order by a.created desc

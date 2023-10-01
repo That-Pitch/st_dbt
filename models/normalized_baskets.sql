@@ -18,4 +18,4 @@ select id::bigint,
 
 from {{ source("raw_synchtank", "baskets") }} b
 where created::date > date('2023-06-01')
-
+order by created desc
