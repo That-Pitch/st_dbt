@@ -20,6 +20,7 @@
             set_foreign_key(
                 "jt_id_fk", "job_id", "{{ source('jobs','job_tracker') }} (id)"
             ),
+            "CREATE SEQUENCE payments_seq INCREMENT 1 MINVALUE 1 MAXVALUE 9223372036854775807START 1 CACHE 1; ALTER TABLE {{this}} ALTER COLUMN id SET DEFAULT nextval('payments_seq');",
         ]
     )
 }}
