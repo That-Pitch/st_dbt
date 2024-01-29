@@ -1,7 +1,12 @@
 {{
     config(
         post_hook=[set_primary_key("ntfr_id_pk","id"),
-
+        set_foreign_key(
+                "na_id_fk", "artist", "{{ ref('normalized_artists') }} (id)"
+            ),
+set_foreign_key(
+                "nt_id_fk", "id", "{{ ref('normalized_tracks') }} (id)"
+            ),
     ]
     )
 }}
@@ -13,7 +18,7 @@ _airbyte_emitted_at,
 _airbyte_normalized_at,
 _airbyte_reviewtracks_hashid,
 album,
-artist,
+artist::bigint,
 artistname,
 artistnames,
 audiomp3,
