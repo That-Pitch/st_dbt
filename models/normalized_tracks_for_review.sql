@@ -4,9 +4,6 @@
         set_foreign_key(
                 "na_id_fk", "artist", "{{ ref('normalized_artists') }} (id)"
             ),
-set_foreign_key(
-                "nt_id_fk", "id", "{{ ref('normalized_tracks') }} (id)"
-            ),
     ]
     )
 }}
