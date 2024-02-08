@@ -18,9 +18,11 @@ select
     u.id::bigint as user_id,
     a.id::bigint as artist_id,
     a.name as artist_name,
+    'https://music.thatpitch.com/artist/' || a.hash as store_url,
     u.name as user_name,
     u.email as email,
     u.subscription_name as sub_name
+
 from {{ ref("normalized_users") }} as u
 cross join lateral jsonb_array_elements(u.artists) as artist
 join {{ ref("normalized_artists") }} as a on a.id::bigint = artist::bigint

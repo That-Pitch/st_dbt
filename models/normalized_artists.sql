@@ -4,6 +4,7 @@ select
     a.id::bigint,
     a.created,
     a.name,
+    a.hash,
     a._airbyte_emitted_at,
     a._airbyte_ab_id,
     a._airbyte_artists_hashid
