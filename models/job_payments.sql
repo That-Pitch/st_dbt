@@ -18,7 +18,9 @@
                 "nl_id_fk", "license_id", "{{ ref('normalized_licenses') }} (id)"
             ),
             set_foreign_key(
-                "jt_id_fk", "job_id", "{{ source('jobs','job_tracker') }} (id)"
+                "basket_item_id_fk",
+                "basket_item_id",
+                "{{ ref('normalized_baskets_comp') }} (item_id)",
             ),
             "CREATE SEQUENCE if not exists public_normalized.payments_seq INCREMENT 1 MINVALUE 1 MAXVALUE 9223372036854775807START 1 CACHE 1; ALTER TABLE {{this}} ALTER COLUMN id SET DEFAULT nextval('payments_seq');",
         ]
