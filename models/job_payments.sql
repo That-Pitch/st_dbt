@@ -1,6 +1,7 @@
 {{
     config(
         post_hook=[
+            set_column_default("created_at","CURRENT_TIMESTAMP"),
             set_primary_key("job_payments_pk", "id"),
             set_foreign_key(
                 "nu_id_fk", "user_id", "{{ ref('normalized_users') }} (id)"
