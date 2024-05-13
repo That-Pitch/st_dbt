@@ -21,7 +21,12 @@ select
     'https://music.thatpitch.com/artist/' || a.hash as store_url,
     u.name as user_name,
     u.email as email,
-    u.subscription_name as sub_name
+    u.subscription_name as sub_name,
+    a.artist_image,
+    a.instagram,
+    a.bio,
+    a.website,
+    a.spotify
 
 from {{ ref("normalized_users") }} as u
 cross join lateral jsonb_array_elements(u.artists) as artist
